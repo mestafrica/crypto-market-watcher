@@ -32,7 +32,7 @@ You have been approached by a client who has a healthy interest in Cryptocurrenc
 
 * Fork (not clone) this repo
 * Implement your solution using HTML, CSS and Javascript (ES6, both at the Backend and the Frontend)
-* Open an issue with a link to your fork.
+* [Open an issue](https://github.com/mestafrica/crypto-market-watcher/issues/new) with a link to your fork
 
 ### Basic Features
 
