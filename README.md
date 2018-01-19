@@ -4,6 +4,26 @@ A nodejs application to watch Cryptocurrency exchanges for the price of BTC/USD 
 
 The base was generated using Yo's [generator-express-es6](https://www.npmjs.com/package/generator-express-es6).
 
+## Running the Application
+
+After forking this repository, clone your version and run the following commands to start using the application. 
+
+Review the work done for you and implement your changes.
+
+```bash
+
+# make sure you're in the project's directory
+cd crypto-market-watcher
+
+# installs project dependencies
+npm install
+
+# starts the server
+DEBUG=crypto-market-watcher:* npm start
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to view the application.
+
 ## Problem Description
 
 You have been approached by a client who has a healthy interest in Cryptocurrency. He wants to know how the various coins are performing against US Dollars. His Company is mostly interested in Bitcoin. What his team needs is a dashboard that shows the price of Bitcoin at any point in time without having to refresh the browser. They need the pricing information in realtime because that'd influence their decision whether to buy or sell.
@@ -25,7 +45,7 @@ Your implementation must include at least the following;
 
 ### Advanced Features
 
-The following are nice to have features, you can decide not to implement then. It would be a good a learning opportunity should you decide to implement.
+The following are nice to have features, you can decide not to implement them. It would be a good a learning opportunity to do so though.
 
 * Persist the market data in a PostgreSQL database ([node-postgres](https://github.com/brianc/node-postgres))
 * Allow users to set up alerts for a certain price point
@@ -36,3 +56,5 @@ The following are nice to have features, you can decide not to implement then. I
 * [Building a website using Nodejs](https://scotch.io/courses/build-a-nodejs-website/course-introduction)
 * [node-postgres documentation](https://node-postgres.com/)
 * [Building a Slack Bot with Modern Node.js Workflows](https://scotch.io/tutorials/building-a-slack-bot-with-modern-nodejs-workflows) (A tutorial on a real world use case of nodejs)
+
+**Note: You are not allowed to use a library such as jQuery for traversing/manipulating the DOM.**
