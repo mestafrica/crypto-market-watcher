@@ -2,28 +2,23 @@ import express from 'express';
 
 const router = express.Router();
 
-/* GET index page. */
-router.get('/', (req, res) => {
-  res.render('index', {
-    title: 'Express'
-  });
-});
+var auth = require("../controllers/AuthController.js");
 
-router.get('/login', (req, res) => {
-  res.render('login', {
-    title: 'login'
-  });
-});
+router.get('/', auth.home);
+// route to register page
+router.get('/register', auth.register);
 
-router.post('/login/submit', (req, res) => {
-  let username = req.body.username;
-  let password = req.body.password;
+// route for register action
+router.post('/register', auth.doRegister);
 
-  res.render('home', {
-      username: username,
-      password: password,
-      title: 'succes'
-  });
-});
+// route to login page
+router.get('/login', auth.login);
+
+// route for login action
+router.post('/login', auth.doLogin);
+
+// route for logout action
+router.get('/logout', auth.logout);
+
 
 export default router;

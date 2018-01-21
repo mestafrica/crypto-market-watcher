@@ -4,6 +4,20 @@ import Debug from 'debug';
 import express from 'express';
 import logger from 'morgan';
 import path from 'path';
+
+//using mongoose to connect to mongodb
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/node-auth')
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
+
+//adding require-js
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+//importing handlebars
+const hbs = require('express-handlebars')
 // import favicon from 'serve-favicon';
 
 import index from './routes/index';
@@ -11,8 +25,10 @@ import index from './routes/index';
 const app = express();
 const debug = Debug('crypto-martket-watcher:app');
 app.set('views', path.join(__dirname, 'views'));
+
 // view engine setup
-app.set('view engine', 'ejs');
+app.engine('hbs', hbs({extname: 'hbs'}))
+app.set('view engine', 'hbs');
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -20,6 +36,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+//initialize passport and session
+app.use(require('express-session')({
+    secret: 'mohamed the shinobi',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+var User = require('./models/user');
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(cookieParser());
 
