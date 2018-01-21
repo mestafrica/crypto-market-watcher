@@ -47,16 +47,7 @@
           <h3 class="signup-h2">Company Name</h3>
           <div class="h1-line"></div>
         </div>
-        <div class="w-form">
-          <form id="email-form" name="email-form" data-name="Email Form"><input type="email" class="text-field outline w-input" maxlength="256" autofocus="true" name="email" data-name="Email" placeholder="Enter your email" id="email" required=""><input type="password" class="text-field outline w-input" maxlength="256" name="Password" data-name="Password" placeholder="Create password" id="Password" required="">
-            <p class="sign-up-h3">Forgot my password</p><input type="submit" value="Sign in" data-wait="Signing you in..." class="btn w-button"></form>
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
-        </div><a href="../sign-up/sign-up.html" class="btn signin">Or Sign Up</a></div>
+      </div>
     </div>
   </div>
   <div class="sign-up-section">
@@ -70,10 +61,11 @@
             
           </div>
           <div class="w-form">
-            <form id="email-form" name="email-form" data-name="Email Form" data-redirect="/profile/username" redirect="/profile/username">
-              <input type="text" class="text-field outline w-input" name="name" data-name="Name" placeholder="Enter your name" required>
-              <input type="email" class="text-field outline w-input" maxlength="256" name="email" placeholder="Your email" required="">
-              <input type="password" class="text-field outline w-input" name="Password" placeholder="Create password" required="">
+            <form name="email-form" action="/submit-form" method="POST">
+            <input type="text" class="text-field outline w-input" autofocus="true" name="firstname" placeholder="Enter your firstname" id="firstname">
+            <input type="text" class="text-field outline w-input" autofocus="true" name="lastname" placeholder="Enter your lastname" id="lastname">
+            <input type="email" class="text-field outline w-input" maxlength="256" name="email" data-name="Email" placeholder="Enter your email" id="email">
+            <input type="password" class="text-field outline w-input" maxlength="256" name="password" data-name="Password" placeholder="Create password" id="Password">
               <button type="submit" class="sign-up-beta w-button">SignUp</button>
               </form>
           </div><a href="/signin" data-ix="action-sign-in" class="btn signin">Or sign In</a>

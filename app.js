@@ -4,6 +4,7 @@ import Debug from 'debug';
 import express from 'express';
 import logger from 'morgan';
 import path from 'path';
+import db from './db'
 // import favicon from 'serve-favicon';
 
 import index from './routes/index';
@@ -24,6 +25,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(db);
 
 app.use('/', index);
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="/css/webflow.css" rel="stylesheet" type="text/css">
+    <link href="/css/kazispace.webflow.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <p class='jumbotron'>Welcome to Dashboard <%= title %></p>
+    <div id="trades_placeholder"></div>
+    <script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js"></script>
+    <script>
+            var placeholder = document.getElementById('trades_placeholder'),
+                pusher = new Pusher('de504dc5763aeef9ff52'),
+                tradesChannel = pusher.subscribe('live_trades'),
+                child = null,
+                i = 0;
+    
+            tradesChannel.bind('trade', function (data) {
+                if (i === 0) {
+                    placeholder.innerHTML = '';
+                }
+                child = document.createElement('div');
+                child.innerHTML = '(' + data.timestamp + ') ' + data.id + ': ' + data.amount + ' BTC @ ' + data.price + ' USD ' + data.type;
+                placeholder.appendChild(child);
+                i++;
+            });
+</script>
+  </body>
+</html>
