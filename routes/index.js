@@ -9,4 +9,21 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/login', (req, res) => {
+  res.render('login', {
+    title: 'login'
+  });
+});
+
+router.post('/login/submit', (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+
+  res.render('home', {
+      username: username,
+      password: password,
+      title: 'succes'
+  });
+});
+
 export default router;
